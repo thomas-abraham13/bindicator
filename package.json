@@ -1,0 +1,25 @@
+{
+  "name": "bindicator",
+  "version": "1.0.0",
+  "description": "Script to check the council website and tell me when the bins are being collected using Cypress",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-abraham13/bindicator.git"
+  },
+  "keywords": [
+    "Cypress"
+  ],
+  "author": "Thomas Abraham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomas-abraham13/bindicator/issues"
+  },
+  "homepage": "https://github.com/thomas-abraham13/bindicator#readme",
+  "devDependencies": {
+    "cypress": "^13.6.4"
+  }
+}
