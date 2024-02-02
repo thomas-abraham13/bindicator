@@ -52,6 +52,8 @@ const puppeteer = require('puppeteer');
     const collectday2 = await collect2?.evaluate(el => el.textContent);
 
     // Print the acquired information
+    await delay(2000);
+    console.clear();
     console.log('"%s" : "%s"', bincolor1, collectday1);
     console.log('"%s" : "%s"', bincolor2, collectday2);
 
