@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: true, args: ['--start-maximized'] });
+    const browser = await puppeteer.launch({ headless: 'new', args: ['--start-maximized'] });
     const page = await browser.newPage();
 
     //Delay function
@@ -60,6 +60,11 @@ const puppeteer = require('puppeteer');
     console.clear();
     console.log('"%s" : "%s"', bincolor1, collectday1);
     console.log('"%s" : "%s"', bincolor2, collectday2);
+
+    var fs = require('fs');
+    fs.writeFile('./data.txt',`Bin 1 : ${bincolor1}\nDate : ${collectday1}\n\nBin 2 : ${bincolor2}\nDate : ${collect2}`,()=>{
+        console.log('Bin Data Saved');
+    })
 
     await browser.close();
 
