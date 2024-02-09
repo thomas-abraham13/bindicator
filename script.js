@@ -62,7 +62,7 @@ const puppeteer = require('puppeteer');
     console.log('"%s" : "%s"', bincolor2, collectday2);
 
     var fs = require('fs');
-    fs.writeFile('./data.txt',`Bin 1 : ${bincolor1}\nDate : ${collectday1}\nBin 2 : ${bincolor2}\nDate : ${collectday2}`,()=>{
+    fs.writeFile('./data.json',`{"text" : "BIN 1 : \n${bincolor1} : ${collectday1}\n\nBIN 2 : \n${bincolor2} : ${collectday2}"}`,()=>{
         console.log('Bin Data Saved');
     })
 

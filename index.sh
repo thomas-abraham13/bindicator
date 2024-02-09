@@ -6,12 +6,10 @@ node script.js
 while IFS= read -r line
     do
         echo "Line: $line"
-    done < data.txt
+    done < data.json
 
 # Output:
 # Line: [Each line from basic.txt will be printed here]
 
 echo "POST output to Slack bot:"
-curl -X POST -H 'Content-type: application/json' --data '{
-    "text":"text"
-}' https://hooks.slack.com/services/
+curl -X POST -H 'Content-type: application/json' --data-binary "@data.json" https://hooks.slack.com/services/
