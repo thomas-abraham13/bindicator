@@ -14,4 +14,4 @@ while IFS= read -r line
 echo "POST output to Slack bot:"
 curl -X POST -H 'Content-type: application/json' --data '{
     "text":"text"
-}'
+}' https://hooks.slack.com/services/
