@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thomas-abraham13/bindicator#readme",
   "dependencies": {
-    "puppeteer": "^21.10.0"
+    "@slack/web-api": "^7.0.1",
+    "puppeteer": "^21.11.0"
   }
 }

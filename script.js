@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: true, args: ['--start-maximized'] });
+    const browser = await puppeteer.launch({ headless: 'new', args: ['--start-maximized'] });
     const page = await browser.newPage();
 
     //Delay function
@@ -40,20 +40,31 @@ const puppeteer = require('puppeteer');
 
     // Locate the Bin colors and related dates and assign them to a variable
     const bin1 = await page.waitForSelector('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9ed93a174c32b14f839b65f6abc42d8108_div > div > div:nth-child(2) > div:nth-child(1) > strong');
-    const bincolor1 = await bin1?.evaluate(el => el.textContent);
+    const bintext1 = await bin1?.evaluate(el => el.textContent);
+    bincolor1 = bintext1.replace(' - weekly collection','');
 
     const collect1 = await page.waitForSelector('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9ed93a174c32b14f839b65f6abc42d8108_div > div > div:nth-child(2) > div:nth-child(2)');
-    const collectday1 = await collect1?.evaluate(el => el.textContent);
+    const collecttext1 = await collect1?.evaluate(el => el.textContent);
+    collectday1 = collecttext1.replace('Next collection date:   ','');
 
     const bin2 = await page.waitForSelector('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9ed93a174c32b14f839b65f6abc42d8108_div > div > div:nth-child(4) > div:nth-child(1) > strong');
-    const bincolor2 = await bin2?.evaluate(el => el.textContent);
+    const bintext2 = await bin2?.evaluate(el => el.textContent);
+    bincolor2 = bintext2.replace(' - weekly collection','');
 
     const collect2 = await page.waitForSelector('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9ed93a174c32b14f839b65f6abc42d8108_div > div > div:nth-child(4) > div:nth-child(2)');
-    const collectday2 = await collect2?.evaluate(el => el.textContent);
+    const collecttext2 = await collect2?.evaluate(el => el.textContent);
+    collectday2 = collecttext2.replace('Next collection date:   ','');
 
     // Print the acquired information
+    await delay(2000);
+    console.clear();
     console.log('"%s" : "%s"', bincolor1, collectday1);
     console.log('"%s" : "%s"', bincolor2, collectday2);
+
+    var fs = require('fs');
+    fs.writeFile('./data.txt',`Bin 1 : ${bincolor1}\nDate : ${collectday1}\nBin 2 : ${bincolor2}\nDate : ${collectday2}`,()=>{
+        console.log('Bin Data Saved');
+    })
 
     await browser.close();
 
