@@ -38,7 +38,7 @@ const puppeteer = require('puppeteer');
     await page.waitForNavigation();
     console.log("Address Selected : SUCCESS");
 
-    // Locate the Bin colors and related dates and assign them to a variable
+    // Locate the Bin colors and related dates and assign them to variables
     const bin1 = await page.waitForSelector('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9ed93a174c32b14f839b65f6abc42d8108_div > div > div:nth-child(2) > div:nth-child(1) > strong');
     const bintext1 = await bin1?.evaluate(el => el.textContent);
     bincolor1 = bintext1.replace(' - weekly collection','');
@@ -55,12 +55,13 @@ const puppeteer = require('puppeteer');
     const collecttext2 = await collect2?.evaluate(el => el.textContent);
     collectday2 = collecttext2.replace('Next collection date:   ','');
 
-    // Print the acquired information
+    // Print the stored information
     await delay(2000);
     console.clear();
     console.log('"%s" : "%s"', bincolor1, collectday1);
     console.log('"%s" : "%s"', bincolor2, collectday2);
 
+    // Save the data to a json
     var fs = require('fs');
     fs.writeFile('./data.json',`{"text" : "BIN 1 : \n${bincolor1} : ${collectday1}\n\nBIN 2 : \n${bincolor2} : ${collectday2}"}`,()=>{
         console.log('Bin Data Saved');
