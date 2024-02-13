@@ -56,7 +56,7 @@ const puppeteer = require('puppeteer');
     collectday2 = collecttext2.replace('Next collection date:   ','');
 
     // Print the stored information
-    await delay(2000);
+    await delay(500);
     console.clear();
     console.log('"%s" : "%s"', bincolor1, collectday1);
     console.log('"%s" : "%s"', bincolor2, collectday2);
@@ -64,7 +64,7 @@ const puppeteer = require('puppeteer');
     // Save the data to a json
     var fs = require('fs');
     fs.writeFile('./data.json',`{"text" : "BIN 1 : \n${bincolor1} : ${collectday1}\n\nBIN 2 : \n${bincolor2} : ${collectday2}"}`,()=>{
-        console.log('Bin Data Saved');
+        console.log('Bin Data Saved to data.json');
     })
 
     await browser.close();
