@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: 'new', args: ['--start-maximized'] });
+    const browser = await puppeteer.launch({ headless: false, args: ['--start-maximized'] });
     const page = await browser.newPage();
 
     //Delay function
@@ -21,20 +21,17 @@ const puppeteer = require('puppeteer');
     await page.setViewport({width: 1080, height: 1024});
 
     // Press the 'Find your household collection day' button
-    const fyb = '#title-0 > a'; //Selector for 'Find your household collection day' 
-    await page.click(fyb);
+    await page.click('#title-0 > a'); //Click Selector for 'Find your household collection day' 
     await page.waitForNavigation();
     console.log("Button 'Find your household collection day' Pressed : SUCCESS");
 
     //Enter Postcode into Text box & Find Address
     await page.type('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9e3a3750ae560442c29bbbaf7b1f423f84', 'N33NP', {delay: 100});
     await delay(500);
-    const fa = "#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9e455b794d8fee4fb7922e32157834fd7c"; //Selector for the Find Address button
-    await page.click(fa);
+    await page.click('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9e455b794d8fee4fb7922e32157834fd7c'); //Click Selector for the Find Address button
     await page.waitForNavigation();
     console.log("Button 'Find Address' Pressed : SUCCESS");
-    const add = "#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9eeaf8742f49cb4f7fa9bef99405b859f2 > option:nth-child(14)"; //Selector for Address
-    await page.click(add);
+    await page.click('#MainContent_CUSTOM_FIELD_808562d4b07f437ea751317cabd19d9eeaf8742f49cb4f7fa9bef99405b859f2 > option:nth-child(14)'); //Click Selector for Address
     await page.waitForNavigation();
     console.log("Address Selected : SUCCESS");
 
