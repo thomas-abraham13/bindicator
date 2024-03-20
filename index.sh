@@ -10,3 +10,5 @@ while IFS= read -r line
 # Output:
 echo "POST output to Slack bot:"
 curl -X POST -H 'Content-type: application/json' --data-binary "@data.json" BindicatorWebHookURL
+
+rm data.json
