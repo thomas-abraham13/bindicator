@@ -1,0 +1,23 @@
+{
+  "name": "bindicator",
+  "version": "1.0.0",
+  "description": "Script to check the council website and tell me when the bins are being collected",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-abraham13/bindicator.git"
+  },
+  "author": "Thomas Abraham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomas-abraham13/bindicator/issues"
+  },
+  "homepage": "https://github.com/thomas-abraham13/bindicator#readme",
+  "dependencies": {
+    "@slack/web-api": "^7.0.2",
+    "puppeteer": "^21.11.0"
+  }
+}
