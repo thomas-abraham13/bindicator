@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: "new", args: ['--start-maximized'] });
+    const browser = await puppeteer.launch({ headless: "true", args: ['--start-maximized'] });
     const page = await browser.newPage();
 
     //Delay function
